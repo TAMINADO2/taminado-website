@@ -1,0 +1,468 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#0a0a0a">
+<meta name="description" content="TAMINADO Books and FX — books, trading education, discipline and personal growth.">
+<title>TAMINADO | Books, Forex & Growth</title>
+
+<style>
+:root {
+  --bg: #090909;
+  --panel: #141414;
+  --gold: #d9ad52;
+  --gold-light: #f4d68d;
+  --text: #f5f2eb;
+  --muted: #b5b2aa;
+  --border: #303030;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; scroll-padding-top: 85px; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.7;
+}
+a { color: inherit; text-decoration: none; }
+button, input, textarea { font: inherit; }
+.container { width: min(1120px, 90%); margin: auto; }
+.gold { color: var(--gold); }
+.eyebrow {
+  color: var(--gold);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: .76rem;
+  font-weight: bold;
+}
+h1, h2, h3 { line-height: 1.2; }
+h2 { font-size: clamp(1.8rem, 5vw, 2.7rem); margin: 12px 0; }
+section { padding: 82px 0; }
+.section-intro { color: var(--muted); max-width: 650px; margin: 12px 0 32px; }
+
+header {
+  background: rgba(9,9,9,.96);
+  border-bottom: 1px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.nav {
+  min-height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+.logo { font-size: 1.45rem; font-weight: 900; letter-spacing: 2px; }
+.logo span { color: var(--gold); }
+nav { display: flex; gap: 22px; align-items: center; }
+nav a { color: var(--muted); font-size: .9rem; }
+nav a:hover { color: var(--gold); }
+.menu-btn {
+  display: none;
+  background: none;
+  color: var(--gold);
+  border: 1px solid var(--border);
+  padding: 5px 11px;
+  border-radius: 6px;
+}
+.btn {
+  display: inline-block;
+  padding: 12px 20px;
+  border: 1px solid var(--gold);
+  border-radius: 5px;
+  color: #090909;
+  background: var(--gold);
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+}
+.btn:hover { background: var(--gold-light); }
+.btn-outline { background: transparent; color: var(--gold); }
+.btn-outline:hover { color: #090909; }
+
+.hero {
+  min-height: 570px;
+  display: flex;
+  align-items: center;
+  background:
+    radial-gradient(ellipse at 85% 40%, #45351b55, transparent 48%),
+    linear-gradient(120deg, #090909, #15130e);
+  border-bottom: 1px solid var(--border);
+}
+.hero-content { padding: 75px 0; max-width: 780px; }
+.hero h1 {
+  font-size: clamp(2.7rem, 9vw, 5.6rem);
+  letter-spacing: -2px;
+  margin: 18px 0;
+}
+.hero h1 span { color: var(--gold); }
+.hero p { color: var(--muted); max-width: 590px; margin-bottom: 27px; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; }
+.hero-note { margin-top: 35px; color: #8d897f; font-size: .85rem; }
+
+.grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; }
+.card {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 24px;
+  overflow: hidden;
+}
+.card h3 { margin: 18px 0 9px; font-size: 1.2rem; }
+.card p { color: var(--muted); font-size: .94rem; margin-bottom: 18px; }
+.card .btn { margin-top: 5px; }
+.book-cover {
+  height: 245px;
+  max-width: 200px;
+  margin: 0 auto;
+  padding: 22px 14px;
+  background: linear-gradient(145deg, #27231b, #090909);
+  border: 1px solid #a98a4b;
+  box-shadow: 5px 7px 0 #050505, 0 0 20px #d9ad5210;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  text-align: center;
+}
+.book-cover small { color: var(--gold); letter-spacing: 2px; }
+.book-cover strong { font-size: 1.45rem; line-height: 1.25; }
+.book-cover span { font-size: .72rem; color: var(--muted); }
+
+.icon {
+  width: 52px; height: 52px;
+  border: 1px solid #6e592e;
+  border-radius: 9px;
+  display: grid; place-items: center;
+  color: var(--gold); font-size: 1.5rem;
+}
+.dark-section { background: #101010; border-block: 1px solid var(--border); }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 45px; align-items: center; }
+.feature-list { list-style: none; margin: 20px 0; }
+.feature-list li { padding: 9px 0; color: var(--muted); }
+.feature-list li::before { content: "✦ "; color: var(--gold); }
+.quote {
+  border-left: 3px solid var(--gold);
+  padding: 24px;
+  background: var(--panel);
+  font-size: 1.15rem;
+  color: var(--gold-light);
+}
+.stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 25px; }
+.stat { padding: 17px; background: var(--panel); border: 1px solid var(--border); border-radius: 8px; }
+.stat strong { display: block; color: var(--gold); font-size: 1.05rem; }
+.stat span { color: var(--muted); font-size: .8rem; }
+
+.contact-grid { display: grid; grid-template-columns: .8fr 1.2fr; gap: 35px; }
+form { display: grid; gap: 14px; }
+label { font-size: .9rem; color: var(--muted); }
+input, textarea {
+  width: 100%; margin-top: 6px; padding: 13px;
+  color: var(--text); background: var(--panel);
+  border: 1px solid var(--border); border-radius: 5px;
+}
+input:focus, textarea:focus { outline: 1px solid var(--gold); }
+textarea { min-height: 125px; resize: vertical; }
+.notice { color: var(--muted); font-size: .82rem; margin-top: 12px; }
+#form-message { color: var(--gold); font-size: .9rem; }
+footer { padding: 30px 0; border-top: 1px solid var(--border); color: var(--muted); font-size: .85rem; }
+.footer-row { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 12px; }
+footer a:hover { color: var(--gold); }
+.disclaimer { margin-top: 16px; font-size: .78rem; max-width: 800px; }
+
+@media (max-width: 760px) {
+  .menu-btn { display: block; }
+  nav {
+    display: none; position: absolute; top: 72px; left: 0; right: 0;
+    background: #101010; border-bottom: 1px solid var(--border);
+    padding: 20px 5%; align-items: stretch; flex-direction: column; gap: 16px;
+  }
+  nav.open { display: flex; }
+  .grid { grid-template-columns: 1fr; }
+  .split, .contact-grid { grid-template-columns: 1fr; }
+  .hero { min-height: auto; }
+  .hero-content { padding: 75px 0; }
+  .stats { grid-template-columns: 1fr; }
+  section { padding: 60px 0; }
+  .book-cover { height: 225px; }
+}
+</style>
+</head>
+
+<body>
+<header>
+  <div class="container nav">
+    <a class="logo" href="#home">TAMINADO<span>.</span></a>
+    <button class="menu-btn" id="menu-btn" aria-label="Open navigation"
+      aria-expanded="false">☰ Menu</button>
+    <nav id="nav-links" aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#books">Books</a>
+      <a href="#forex">TAMINADO FX</a>
+      <a href="#about">About</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="hero" id="home">
+    <div class="container hero-content">
+      <div class="eyebrow">Knowledge • Discipline • Growth</div>
+      <h1>BUILD YOUR MIND.<br><span>BUILD YOUR FUTURE.</span></h1>
+      <p>
+        Welcome to TAMINADO — a platform for books, trading education,
+        personal development, and the discipline to keep growing.
+      </p>
+      <div class="actions">
+        <a class="btn" href="#books">Explore My Books</a>
+        <a class="btn btn-outline" href="#forex">Discover TAMINADO FX</a>
+      </div>
+      <p class="hero-note">Learn with purpose. Act with discipline. Grow with consistency.</p>
+    </div>
+  </section>
+
+  <section id="books">
+    <div class="container">
+      <div class="eyebrow">Read. Think. Transform.</div>
+      <h2>My <span class="gold">Books</span></h2>
+      <p class="section-intro">
+        Explore ideas about personal growth, discipline, mindset and trading.
+        Replace these sample cards with your actual published books.
+      </p>
+
+      <div class="grid">
+        <article class="card">
+          <div class="book-cover">
+            <small>TAMINADO</small>
+            <strong>THE<br>PROBABILITY<br>TRADER</strong>
+            <span>Think in probabilities. Manage risk.</span>
+            <small>TRADING EDUCATION</small>
+          </div>
+          <h3>The Probability Trader</h3>
+          <p>A book about approaching trading through probabilities, discipline and risk awareness.</p>
+          <a class="btn btn-outline" href="#contact"
+             data-book="The Probability Trader">Ask About This Book</a>
+        </article>
+
+        <article class="card">
+          <div class="book-cover">
+            <small>TAMINADO</small>
+            <strong>DAILY<br>TRANSFORMATION</strong>
+            <span>Small actions. Consistent growth.</span>
+            <small>PERSONAL GROWTH</small>
+          </div>
+          <h3>Daily Transformation</h3>
+          <p>A placeholder for your personal development book. Update the title and description to match your real work.</p>
+          <a class="btn btn-outline" href="#contact"
+             data-book="Daily Transformation">Ask About This Book</a>
+        </article>
+
+        <article class="card">
+          <div class="book-cover">
+            <small>TAMINADO</small>
+            <strong>THE<br>DISCIPLINED<br>MIND</strong>
+            <span>Focus. Habits. Purpose.</span>
+            <small>PERSONAL DEVELOPMENT</small>
+          </div>
+          <h3>The Disciplined Mind</h3>
+          <p>A sample book listing. Replace it with another title you have actually written or published.</p>
+          <a class="btn btn-outline" href="#contact"
+             data-book="The Disciplined Mind">Ask About This Book</a>
+        </article>
+      </div>
+      <p class="notice">The three cover designs above are illustrations made with CSS, not your actual book covers. Update the sample titles before publishing.</p>
+    </div>
+  </section>
+
+  <section class="dark-section" id="forex">
+    <div class="container split">
+      <div>
+        <div class="eyebrow">TAMINADO FX</div>
+        <h2>Trade with a plan.<br><span class="gold">Respect the risk.</span></h2>
+        <p class="section-intro">
+          Explore educational resources on market structure, price action,
+          trading psychology, risk management and disciplined execution.
+        </p>
+        <ul class="feature-list">
+          <li>Market structure and price action</li>
+          <li>Liquidity, order blocks and fair value gaps</li>
+          <li>Trading plans and journaling</li>
+          <li>Position sizing and risk management</li>
+          <li>Psychology, patience and consistency</li>
+        </ul>
+        <a class="btn" href="#contact" data-topic="Forex education">
+          Ask About Trading Education
+        </a>
+      </div>
+
+      <div>
+        <div class="quote">
+          "Your job is not to predict every move. Your job is to manage risk and follow a tested plan."
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>PLAN</strong><span>Know your setup</span></div>
+          <div class="stat"><strong>PROTECT</strong><span>Manage your risk</span></div>
+          <div class="stat"><strong>REVIEW</strong><span>Learn from data</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about">
+    <div class="container split">
+      <div>
+        <div class="eyebrow">The person behind the brand</div>
+        <h2>About <span class="gold">TAMINADO</span></h2>
+        <p class="section-intro">
+          TAMINADO brings together learning, trading education, personal
+          discipline and the pursuit of meaningful growth.
+        </p>
+        <p>
+          The vision is to encourage people to think carefully, keep learning,
+          build useful habits and make more informed decisions.
+        </p>
+        <p class="section-intro">
+          This is a starting biography. Add your real story, experience,
+          qualifications and achievements here. Be honest about what you
+          have accomplished and what you are still learning.
+        </p>
+        <a class="btn btn-outline" href="#contact">Get in Touch</a>
+      </div>
+      <div class="card">
+        <div class="icon">✦</div>
+        <h3 class="gold">The TAMINADO Principles</h3>
+        <ul class="feature-list">
+          <li>Discipline before motivation</li>
+          <li>Learning before assumptions</li>
+          <li>Risk management before profit targets</li>
+          <li>Consistency before shortcuts</li>
+          <li>Growth that creates positive impact</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="dark-section" id="contact">
+    <div class="container">
+      <div class="eyebrow">Start a conversation</div>
+      <h2>Contact <span class="gold">TAMINADO</span></h2>
+      <p class="section-intro">
+        Ask about books, trading education, collaboration or other enquiries.
+      </p>
+
+      <div class="contact-grid">
+        <div>
+          <h3>Let's connect.</h3>
+          <p class="section-intro">
+            Use the form to prepare your message. Before the website goes
+            live, connect the form to an email service so messages can reach you.
+          </p>
+          <p class="notice">Email: Add your real contact email here.</p>
+          <p class="notice">Social media: Add your official profile links here.</p>
+        </div>
+
+        <form id="contact-form">
+          <label>
+            Your name
+            <input type="text" id="name" name="name"
+              placeholder="Enter your name" required>
+          </label>
+          <label>
+            Your email
+            <input type="email" id="email" name="email"
+              placeholder="you@example.com" required>
+          </label>
+          <label>
+            Subject
+            <input type="text" id="subject" name="subject"
+              placeholder="What would you like to discuss?" required>
+          </label>
+          <label>
+            Your message
+            <textarea id="message" name="message"
+              placeholder="Write your message here..." required></textarea>
+          </label>
+          <button class="btn" type="submit">Prepare Message</button>
+          <p id="form-message" role="status" aria-live="polite"></p>
+          <p class="notice">
+            Demo form only: this page does not transmit or store your message.
+          </p>
+        </form>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="container">
+    <div class="footer-row">
+      <a class="logo" href="#home">TAMINADO<span>.</span></a>
+      <p>Books • Forex • Personal Growth</p>
+      <p>© <span id="year"></span> TAMINADO</p>
+    </div>
+    <p class="disclaimer">
+      Risk notice: Forex and leveraged trading involve substantial risk of
+      loss. Trading education is not financial advice or a guarantee of
+      profits. You can lose some or all of your trading capital. Learn,
+      practise responsibly and never risk money you cannot afford to lose.
+    </p>
+  </div>
+</footer>
+
+<script>
+const menuButton = document.getElementById("menu-btn");
+const navigation = document.getElementById("nav-links");
+
+menuButton.addEventListener("click", () => {
+  const isOpen = navigation.classList.toggle("open");
+  menuButton.setAttribute("aria-expanded", String(isOpen));
+  menuButton.textContent = isOpen ? "✕ Close" : "☰ Menu";
+});
+
+navigation.querySelectorAll("a").forEach(link => {
+  link.addEventListener("click", () => {
+    navigation.classList.remove("open");
+    menuButton.setAttribute("aria-expanded", "false");
+    menuButton.textContent = "☰ Menu";
+  });
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+
+document.querySelectorAll("[data-book]").forEach(button => {
+  button.addEventListener("click", () => {
+    document.getElementById("subject").value =
+      "Book enquiry: " + button.dataset.book;
+  });
+});
+
+document.querySelectorAll("[data-topic]").forEach(button => {
+  button.addEventListener("click", () => {
+    document.getElementById("subject").value = button.dataset.topic;
+  });
+});
+
+document.getElementById("contact-form").addEventListener("submit", event => {
+  event.preventDefault();
+  const name = document.getElementById("name").value.trim();
+  const email = document.getElementById("email").value.trim();
+  const subject = document.getElementById("subject").value.trim();
+  const message = document.getElementById("message").value.trim();
+
+  if (!name || !email || !subject || !message) {
+    document.getElementById("form-message").textContent =
+      "Please complete every field.";
+    return;
+  }
+
+  document.getElementById("form-message").textContent =
+    "Your message is ready, but has NOT been sent. Connect an email service to receive enquiries.";
+});
+</script>
+</body>
+        </html>
+            
